@@ -1,0 +1,19 @@
+<view class='page'>
+  <view class='page__hd imagelist'>
+    <image class='image' mode='aspectFill' src='{{images[0]}}'></image>
+    <image class='image' mode='aspectFill' src='{{images[1]}}'></image>
+    <image class='image' mode='aspectFill' src='{{images[2]}}'></image>
+  </view>
+  <view class='page__bd page__bd_spacing'>
+    <!-- <button disabled='{{!takePhoto}}' bindtap='takePhoto'>拍照({{imageCount}})</button> -->
+    <button class='weui-btn ' bindtap='chooseImage'>选择照片</button>
+    
+    <input class='weui-input input-title' placeholder="商品品牌和名称，如：无印良品衬衫 L码" maxlength="15"></input>
+    
+    <view class='goods-price'>
+      <input class='weui-input' type='digit' placeholder="原价"></input>
+      <input class='weui-input' type='digit' placeholder='售价'></input>
+    </view>
+    <button class="weui-btn" type="primary">上传</button>
+  </view>
+</view>

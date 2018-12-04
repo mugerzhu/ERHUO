@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/post/post",
+    "pages/aboutme/aboutme",
+    "pages/category/category",
+    "pages/detail/detail",
+    "pages/message/message"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "backgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "YCU二货",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#2c2c2c",
+    "color": "#8A8A8A",
+    "backgroundTextStyle": "dark",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/homedefault.png",
+        "selectedIconPath": "images/homeselected.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "images/categorydefault.png",
+        "selectedIconPath": "images/categoryselected.png"
+      },
+      {
+        "pagePath": "pages/post/post",
+        "text": "发布",
+        "iconPath": "images/post.png",
+        "selectedIconPath": "images/post.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "images/messagedefault.png",
+        "selectedIconPath": "images/messageselected.png"
+      },
+      {
+        "pagePath": "pages/aboutme/aboutme",
+        "text": "我的",
+        "iconPath": "images/aboutmedefault.png",
+        "selectedIconPath": "images/aboutmeselected.png"
+      }
+    ]
+  }
+}
