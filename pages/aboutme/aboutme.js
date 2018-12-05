@@ -7,14 +7,28 @@ Page({
    */
   data: {
     userInfo: null,
-    isLogin: true
+    logged: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var token = wx.getStorageSync('token');
+    if (!token) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+        fail: function () {
+          console.log("页面跳转失败");
+        },
+        success: function () {
+          console.log("页面跳转成功");
+        },
+        complete: function () {
+          console.log("跳转完成");
+        }
+      });
+    }
   },
 
   /**
@@ -63,65 +77,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
-  },
-  login: function(e) {
-
-    let that = this
-
-    var detail = e.detail
-    console.log(detail)
-    var userInfo = detail.userInfo
-
-    wx.showLoading({
-      title: '登录中',
-    })
-    //调用wx.login接口
-    wx.login({
-
-      //成功获取code后将code和用户加密数据发送到服务器
-      success: (res) => {
-
-        if (res.code) {
-          wx.request({
-            url: 'http://localhost:8080/login',
-            method: 'POST',
-            header: {
-              'content-type': 'application/json',
-              'appname': 'wechatminiprogram'
-            },
-            data: {
-              code: res.code,
-              encryptedData: detail.encryptedData,
-              iv: detail.iv
-            },
-            success: (res) => {
-
-              if (res.data.code == 200) {
-                //登录成功
-                wx.setStorageSync('token', res.data.data.sessionKey)
-                that.setData({
-                  isLogin:false,
-                  userInfo:userInfo
-                })
-              }
-
-
-            }
-          })
-        }
-
-
-
-
-      }
-
-
-    })
-    setTimeout(function(){
-      wx.hideLoading()
-    },2000)
-
 
   }
 })

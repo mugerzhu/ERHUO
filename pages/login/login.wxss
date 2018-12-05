@@ -1,0 +1,6 @@
+/* pages/login/login.wxss */
+@import '/weui.wxss';
+
+.login-btn {
+  padding: 50rpx;
+}

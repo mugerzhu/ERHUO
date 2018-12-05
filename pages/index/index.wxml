@@ -1,6 +1,6 @@
 <view class='page'>
 <scroll-view>
-  <swiper autoplay='true' indicator-dots='true'>
+  <swiper autoplay='true'>
     <block wx:for="{{imgUrls}}" wx:key="">
       <swiper-item>
         <image src="{{item}}" mode='aspectFill' style='width:100%;height:100%'/>

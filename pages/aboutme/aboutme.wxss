@@ -1,0 +1,32 @@
+@import '/weui.wxss';
+.main{
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-name{
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px #bbb;
+}
+
+.user-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  overflow:hidden;
+  margin-right: 50rpx;
+}
+.user-name {
+  font-weight: bold;
+  font-size: 20px;
+  padding-left: 50rpx;
+}
+
