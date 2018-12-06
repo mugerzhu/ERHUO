@@ -14,6 +14,6 @@
       <input class='weui-input' type='digit' placeholder="原价"></input>
       <input class='weui-input' type='digit' placeholder='售价'></input>
     </view>
-    <button class="weui-btn" type="primary">上传</button>
+    <button class="weui-btn" type="primary" bindtap='upload'>上传</button>
   </view>
 </view>

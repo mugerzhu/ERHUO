@@ -1,4 +1,5 @@
 // pages/post/post.js
+var app = getApp();
 Page({
 
   /**
@@ -104,8 +105,20 @@ Page({
         that.setData({
             images: tempFilePaths
           })
-        console.log(tempFilePaths);
       }
     })
+  },
+  upload: function() {
+    let that = this;
+    var images = that.data.images;
+    console.log(images);
+    for(var index in images) {
+      wx.uploadFile({
+        url: '',
+        filePath: images[index],
+        name: 'image',
+      })
+      
+    }
   }
 })

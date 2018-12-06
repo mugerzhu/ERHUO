@@ -5,6 +5,6 @@
     <view class="page__desc">获取你的公开信息（昵称，头像等）</view>
   </view>
   <view class='page__bd login-btn'>
-    <button open-type='getUserInfo' lang="zh_CN" bindgetuserinfo='login' class="weui-btn" type="primary">登录</button>
+    <button open-type='getUserInfo' bindgetuserinfo='login' class="weui-btn" type="primary">登录</button>
   </view>
 </view>

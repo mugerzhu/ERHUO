@@ -76,6 +76,17 @@ Page({
       }
     })
 
+    var userInfo;
+    //获取用户基本信息
+    wx.getUserInfo({
+      lang:'zh_CN',
+      success: function (res) {
+        userInfo = res.userInfo
+        console.log(userInfo)
+        wx.setStorageSync('userInfo', res.userInfo)
+      }
+    })
+
     //开始登录
 
     wx.login({
@@ -88,7 +99,14 @@ Page({
             url: 'http://localhost:8080/login',
             method: 'POST',
             dataType: 'json',
-            data:{code:res.code},
+            data:{
+              'code':res.code,
+              'gender':userInfo.gender,
+              'nickName': userInfo.nickName,
+              'province':userInfo.province,
+              'city':userInfo.city,
+              'avatarUrl':userInfo.avatarUrl
+              },
             //请求发送成功
             success:function(res) {
               //res 对象 三个属性 data header statusCode(服务器返回的http状态码)
@@ -113,10 +131,10 @@ Page({
         }
       },
       fail:function() {
-
+        
       },
       complete:function() {
-
+        console.log(userInfo)
       }
     })  
   }
