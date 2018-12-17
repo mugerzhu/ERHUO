@@ -27,22 +27,10 @@
         "selectedIconPath": "images/homeselected.png"
       },
       {
-        "pagePath": "pages/category/category",
-        "text": "分类",
-        "iconPath": "images/categorydefault.png",
-        "selectedIconPath": "images/categoryselected.png"
-      },
-      {
         "pagePath": "pages/post/post",
         "text": "发布",
         "iconPath": "images/post.png",
         "selectedIconPath": "images/post.png"
-      },
-      {
-        "pagePath": "pages/message/message",
-        "text": "消息",
-        "iconPath": "images/messagedefault.png",
-        "selectedIconPath": "images/messageselected.png"
       },
       {
         "pagePath": "pages/aboutme/aboutme",

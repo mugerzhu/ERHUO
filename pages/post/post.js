@@ -1,4 +1,17 @@
 // pages/post/post.js
+const qiniuUploader = require("../../utils/qiniuUploader");
+const regeneratorRuntime = require("../../utils/regenerator-runtime/runtime");
+
+function initQiniu() {
+  var options = {
+    region: 'SCN',
+    uptokenURL: 'http://localhost:8080/media/token',
+    domain: 'http://media.zdhspace.cn/',
+    shouldUseQiniuFileName: true
+  };
+  qiniuUploader.init(options);
+}
+
 var app = getApp();
 Page({
 
@@ -6,65 +19,66 @@ Page({
    * 页面的初始数据
    */
   data: {
-    images:[]
+    images: [],
+    imagePath: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-   
+  onLoad: function(options) {
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  error: function(e){
+  error: function(e) {
     console.log(e.detail)
   },
   // takePhoto: function(){
@@ -94,7 +108,7 @@ Page({
   //     }
   //   })
   // },
-  chooseImage: function(){
+  chooseImage: function() {
     let that = this;
     wx.chooseImage({
       count: 3,
@@ -103,22 +117,34 @@ Page({
       success(res) {
         const tempFilePaths = res.tempFilePaths;
         that.setData({
-            images: tempFilePaths
-          })
+          images: tempFilePaths
+        })
       }
     })
   },
   upload: function() {
+    this.imgUpload()
+  },
+  imgUpload: async function() {
+    initQiniu();
     let that = this;
     var images = that.data.images;
-    console.log(images);
-    for(var index in images) {
-      wx.uploadFile({
-        url: '',
-        filePath: images[index],
-        name: 'image',
-      })
-      
+
+    for (var i = 0; i < 3; i++) {
+      if (images[i]) {
+        var p = await new Promise(function(resolve, reject) {
+          qiniuUploader.upload(images[i], (res) => {
+            that.data.imagePath[i] = res.imageURL
+            console.log(res.imageURL)
+            console.log(i)
+            resolve();
+          }, (error) => {
+            console.error('error: ' + JSON.stringify(error));
+            reject();
+          });
+        });
+      }
     }
+    console.log(this.data.imagePath)
   }
 })
