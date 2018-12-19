@@ -1,4 +1,6 @@
 // pages/login/login.js
+const app = getApp()
+const url = 'https://api.zdhspace.cn/'
 Page({
 
   /**
@@ -104,7 +106,7 @@ Page({
         if (res) {
           //向服务器发送code
           wx.request({
-            url: 'http://localhost:8080/login',
+            url: url+'login',
             method: 'POST',
             dataType: 'json',
             data: {
@@ -126,6 +128,8 @@ Page({
                     data: res.data.data.sessionKey,
                     //缓存token成功
                     success: function() {
+                      
+                      app.globalData.token = res.data.data.sessionKey
                       //页面跳转
                       wx.switchTab({
                         url: '/pages/index/index',

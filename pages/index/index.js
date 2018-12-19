@@ -1,22 +1,43 @@
 // pages/index/index.js
+const url = 'https://api.zdhspace.cn/'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    goods: [{ goodsName: 'Java核心技术 卷I：基础知识（原书第10版）全新第10版！Java领域极具影响力和价值的著作之一，与《Java编程思想》齐名，10余年全球畅销不衰，广受好评', goodsImage: 'http://img3m6.ddimg.cn/86/32/24035306-1_b_6.jpg', goodsPrice: 93.50 }, { goodsName: '疯狂Java讲义（第4版）10年经典原创读物，覆盖Java 8，Java 9，李刚作品成为50万读者之选，本书赠送包含1500分钟课程讲解的视频、源代码、电子书、课件、面试题，提供微信+QQ答疑群，配套学习交流网站', goodsImage: 'http://img3m9.ddimg.cn/12/17/23532609-1_b_4.jpg', goodsPrice: 81.70 }, { goodsName: 'Java EE互联网轻量级框架整合开发— —SSM框架（Spring MVC+Spring+MyBatis）和RediSSM框架在手，升职加薪我有', goodsImage: 'http://img3m1.ddimg.cn/60/3/25111311-1_b_2.jpg', goodsPrice: 82.10 }, { goodsName: 'Java核心技术 卷I：基础知识（原书第10版）全新第10版！Java领域极具影响力和价值的著作之一，与《Java编程思想》齐名，10余年全球畅销不衰，广受好评', goodsImage: 'http://img3m6.ddimg.cn/86/32/24035306-1_b_6.jpg', goodsPrice: 93.50 }],
-    imgUrls: ['https://dummyimage.com/1000x500/38F/fff.png&Test','https://dummyimage.com/1000x500/3F3/fff.png&Test']
+    goods: [],
+    page:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
+      let that = this
       let res = wx.getSystemInfoSync();
       let boxHeight = res.windowHeight;
       this.setData({
         boxHeight: boxHeight
+      })
+      wx.request({
+        url: url+'goods/page/'+that.data.page,
+        success: function(res) {
+          if(res.data.code==200){
+            that.setData({
+              goods:res.data.data
+            })
+
+          }
+          console.log(res.data.data)
+        },
+        complete:function() {
+          wx.hideLoading();
+        }
       })
   },
 
@@ -31,7 +52,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this;
+    that.setData({
+      goods:that.data.goods
+    })
   },
 
   /**
@@ -59,7 +83,28 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    let that = this
+    var page = that.data.page;
+    wx.request({
+      url: url+'goods/page/'+(page+1),
+      success:function(res) {
+        if(res.data.code==-1){
+          wx.showToast({
+            title: '没有了',
+            icon: 'success',
+            duration: 2000
+          })
+        }else if(res.data.code == 200) {
+          var goods = that.data.goods
+          goods = goods.concat(res.data.data)
+          that.setData({
+            goods:goods,
+            page:page+1
+          })
+          console.log(goods)
+        }
+      }
+    })
   },
 
   /**
@@ -67,19 +112,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  dorequest: function(){
-    wx.request({
-      url: 'http://127.0.0.1:8080/hello',
-      success: function(res){
-        console.log("invoke success!"+res.data+res.statusCode);
-      },
-      fail: function(statusCode){
-        console.log("invoke fail!");
-      }
-    })
-  },
-  toDetails: function(){
-    console.log("ai ya");
   }
 })

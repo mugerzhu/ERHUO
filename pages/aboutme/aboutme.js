@@ -27,21 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    var token = wx.getStorageSync('token');
-    if (!token) {
-      wx.navigateTo({
-        url: '/pages/login/login',
-        fail: function () {
-          console.log("页面跳转失败");
-        },
-        success: function () {
-          console.log("页面跳转成功");
-        },
-        complete: function () {
-          console.log("跳转完成");
-        }
-      });
-    }
+    
   },
 
   /**

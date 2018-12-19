@@ -1,24 +1,20 @@
 //app.js
+const regeneratorRuntime = require("utils/regenerator-runtime/runtime");
 App({
-  onLaunch: function () {
-    // onLauch 有问题，待解决
-    // var token = wx.getStorageSync('token');
-    // console.log(token)
-    // if (token) {
-    //   console.log('you token')
-    //   wx.switchTab({
-    //     url: '/pages/index/index',
-    //     fail: function () {
-    //       console.log("页面跳转失败");
-    //     },
-    //     success: function () {
-    //       console.log("页面跳转成功");
-    //     },
-    //     complete: function () {
-    //       console.log("跳转完成");
-    //     }
-    //   });
-    // }
+  onLaunch:async function () {
+    let that = this
+    var p = await new Promise(function(resolve, reject){
+      var token = wx.getStorageSync('token');
+      if (token) {
+        wx.switchTab({
+          url: '/pages/index/index',
+        })
+        that.globalData.token = token
+        console.log(that.globalData.token)
+        resolve()
+      }
+    })
+    
   },
   globalData: {
     

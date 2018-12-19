@@ -2,10 +2,12 @@
 const qiniuUploader = require("../../utils/qiniuUploader");
 const regeneratorRuntime = require("../../utils/regenerator-runtime/runtime");
 
+const url = 'https://api.zdhspace.cn/'
+
 function initQiniu() {
   var options = {
     region: 'SCN',
-    uptokenURL: 'http://localhost:8080/media/token',
+    uptokenURL: url+'media/token',
     domain: 'http://media.zdhspace.cn/',
     shouldUseQiniuFileName: true
   };
@@ -81,33 +83,6 @@ Page({
   error: function(e) {
     console.log(e.detail)
   },
-  // takePhoto: function(){
-  //   let that = this;
-  //   const ctx = wx.createCameraContext()
-  //   ctx.takePhoto({
-  //     quality: 'high',
-  //     success: (res) => {
-  //       if(that.data.imageCount>0){
-  //         if(that.data.imageCount==1){
-  //           that.setData({
-  //             takePhoto: false
-  //           })
-  //         }
-  //         var tempImagePath = res.tempImagePath;
-  //         var images = that.data.images;
-  //         images.push(tempImagePath);
-  //         console.log("push a temp image to data: " + tempImagePath);
-  //         var imageCount = that.data.imageCount - 1;
-  //         this.setData({
-  //           images: images,
-  //           imageCount: imageCount
-  //         })
-  //       }else{
-  //         console.log("take photo fail")
-  //       }
-  //     }
-  //   })
-  // },
   chooseImage: function() {
     let that = this;
     wx.chooseImage({
@@ -122,16 +97,17 @@ Page({
       }
     })
   },
-  upload: function() {
-    this.imgUpload()
-  },
-  imgUpload: async function() {
+  upload: async function(e) {
+    wx.showLoading({
+      title: '正在提交',
+    })
     initQiniu();
     let that = this;
     var images = that.data.images;
-
+    // 文件上传至七牛云存储
     for (var i = 0; i < 3; i++) {
       if (images[i]) {
+        // 异步操作 同步化
         var p = await new Promise(function(resolve, reject) {
           qiniuUploader.upload(images[i], (res) => {
             that.data.imagePath[i] = res.imageURL
@@ -145,6 +121,36 @@ Page({
         });
       }
     }
-    console.log(this.data.imagePath)
+
+    // 提交表单
+    wx.request({
+      url: url+'goods',
+      method: 'POST',
+      header:{
+        'token':app.globalData.token
+      },
+      data: {
+        'name': e.detail.value.name,
+        'originalPrice': e.detail.value.original_price,
+        'price': e.detail.value.price,
+        'contact': e.detail.value.contact,
+        'introduction':e.detail.value.introduction,
+        'images': this.data.imagePath
+      },
+      dataType: 'JSON',
+      success:function(res) {
+        if(res.data.code == 200) {
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+        }
+      },
+      fail: function() {
+
+      },
+      complete: function() {
+        wx.hideLoading()
+      }
+    })
   }
 })

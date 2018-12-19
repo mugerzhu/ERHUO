@@ -4,19 +4,22 @@
     <image class='image' mode='aspectFill' src='{{images[1]}}'></image>
     <image class='image' mode='aspectFill' src='{{images[2]}}'></image>
   </view>
+  <button class='weui-btn ' bindtap='chooseImage'>选择照片</button>
   <view class='page__bd page__bd_spacing'>
-    <!-- <button disabled='{{!takePhoto}}' bindtap='takePhoto'>拍照({{imageCount}})</button> -->
-    <button class='weui-btn ' bindtap='chooseImage'>选择照片</button>
-    
-    <input class='weui-input input-title' placeholder="商品品牌和名称，如：无印良品衬衫 L码" maxlength="15"></input>
-    
-    <view class='goods-price'>
-      <input class='weui-input' type='digit' placeholder="原价"></input>
-      <input class='weui-input' type='digit' placeholder='售价'></input>
-    </view>
+    <form bindsubmit='upload'>
+      <!-- <button disabled='{{!takePhoto}}' bindtap='takePhoto'>拍照({{imageCount}})</button> -->
 
-    <input class='weui-input input-title' placeholder="联系方式：QQ" type='number' maxlength="15"></input>
-    <button class="weui-btn" type="primary" bindtap='upload'>上传</button>
-    <button bindtap='showlog'>log</button>
+
+      <input name='name' class='weui-input input-title' placeholder="商品品牌和名称，如：无印良品衬衫 L码" maxlength="15"></input>
+
+      <view class='goods-price'>
+        <input name='original_price' class='weui-input' type='digit' placeholder="原价"></input>
+        <input name='price' class='weui-input' type='digit' placeholder='售价'></input>
+      </view>
+
+      <input name='contact' class='weui-input input-title' placeholder="联系方式：QQ" type='number' maxlength="15"></input>
+      <textarea name="introduction" auto-height placeholder="在此描述你的宝贝：如品牌、规格、成色、购买渠道、转手原因等" />
+      <button class="weui-btn" type="primary" form-type='submit'>上传</button>
+    </form>
   </view>
 </view>

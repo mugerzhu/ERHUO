@@ -1,49 +1,27 @@
 <view class='page'>
-<scroll-view>
-  <swiper autoplay='true'>
-    <block wx:for="{{imgUrls}}" wx:key="">
-      <swiper-item>
-        <image src="{{item}}" mode='aspectFill' style='width:100%;height:100%'/>
-      </swiper-item>
-    </block>
-  </swiper>
-  <view class='tag'>每日精选</view>
-  <view class=''>
-    <view class='goods'>
-      <image class='goods-image' mode='scaleToFill' src='{{goods[0].goodsImage}}'></image>
-      <view class='goods-info'>
-        <text class='goods-name'>《与罗摩相会》</text>
-        <text class='goods-intro'>刘慈欣偶像传世神作！</text>
-        <text>仅剩1943个</text>
-      </view>
+  <scroll-view>
+    <swiper autoplay='true'>
+      <block wx:for="{{imgUrls}}" wx:key="">
+        <swiper-item>
+          <image src="{{item}}" mode='aspectFill' style='width:100%;height:100%' />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='tag'>每日精选</view>
+    <view class=''>
+      <block wx:for="{{goods}}" wx:key="">
+        <view class='goods'>
+          <image class='goods-image' mode='scaleToFill' src='{{item.image}}'></image>
+          <view class='goods-info'>
+            <text class='goods-name'>{{item.name}}</text>
+            <text class='goods-intro'>{{item.introduction}}</text>
+            <text>{{item.price}}</text>
+          </view>
+        </view>
+      </block>
     </view>
-    <view class='goods'>
-      <image class='goods-image' mode='scaleToFill' src='{{goods[0].goodsImage}}'></image>
-      <view class='goods-info'>
-        <text class='goods-name'>《与罗摩相会》</text>
-        <text class='goods-intro'>刘慈欣偶像传世神作！</text>
-        <text>仅剩1943个</text>
-      </view>
+    <view class="weui-footer">
+      <view class="weui-footer__text">Copyright © 2016-2018 zdhspace.cn</view>
     </view>
-    <view class='goods'>
-      <image class='goods-image' mode='scaleToFill' src='{{goods[0].goodsImage}}'></image>
-      <view class='goods-info'>
-        <text class='goods-name'>《与罗摩相会》</text>
-        <text class='goods-intro'>刘慈欣偶像传世神作！</text>
-        <text>仅剩1943个</text>
-      </view>
-    </view>
-    <view class='goods'>
-      <image class='goods-image' mode='scaleToFill' src='{{goods[0].goodsImage}}'></image>
-      <view class='goods-info'>
-        <text class='goods-name'>《与罗摩相会》</text>
-        <text class='goods-intro'>刘慈欣偶像传世神作！</text>
-        <text>仅剩1943个</text>
-      </view>
-    </view>
-  </view>
-  <view class="weui-footer">
-    <view class="weui-footer__text">Copyright © 2016-2018 zdhspace.cn</view>
-  </view>
   </scroll-view>
 </view>
