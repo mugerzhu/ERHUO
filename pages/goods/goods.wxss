@@ -1,0 +1,269 @@
+/* pages/goods/goods.wxss */
+.container{
+    background-color: #EEEEEE;
+}
+
+.page-body{
+    background-color: #FFFFFF;
+    margin-bottom: 30rpx;
+    padding-bottom: 20rpx;
+}
+
+swiper {
+    margin-top: 55rpx;
+    height: 530rpx;
+}
+
+.advertise {
+    display: flex;
+    flex-direction: row;
+    height: 56rpx;
+}
+
+.advertise-information {
+    background-color: rgb(253, 246, 215);
+    color: rgb(230, 189, 102);
+    font-size: 30rpx;
+    text-align: center;
+    padding-top: 10rpx;    
+    width: 25%;
+}
+
+.goods-name {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 45rpx;
+    margin-bottom: 45rpx;
+}
+
+.goods-grade {
+    margin-left: 15rpx;
+    background-color: rgb(253, 246, 215);
+    color: rgb(230, 189, 102);
+    font-size: 25rpx;
+    height: 35rpx;
+    width: 110rpx;
+    border-radius: 2rpx;
+    text-align: center;
+}
+
+.goods-price {
+    display: flex;
+    flex-direction: row;
+}
+
+.goods-price-information {
+    display: flex;
+    flex-direction: column;
+}
+
+.goods-price-number {
+    display: flex;
+    flex-direction: row;
+}
+
+.price-before {
+    margin-left: 20rpx;
+    font-size: 25rpx;
+    color: rgba(173, 173, 173, 0.842);
+
+}
+
+.freight {
+    font-size: 25rpx;
+    color: rgba(173, 173, 173, 0.842);
+}
+
+.discount {
+    height: 35rpx;
+    width: 150rpx;
+    background-color: rgb(250, 69, 69);
+    color: #FFFFFF;
+    font-size: 25rpx;
+    border-radius: 5rpx;
+    text-align: center;
+    padding-top: 0rpx; 
+    margin-left: 20rpx;
+}
+
+.goods-info {
+    display: flex;
+    flex-direction: row;
+    font-size: 25rpx;
+    margin-top: 55rpx; 
+
+}
+
+.goods-info-1 {
+    width: 17%;
+    color: rgba(173, 173, 173, 0.842);
+}
+
+.goods-info-2 {
+   width: 63%;
+}
+
+.goods-info-3 {
+    width: 21%;
+    color: rgba(173, 173, 173, 0.842);
+}
+
+.goods-info-4 {
+    width: 4%;
+    color: rgba(173, 173, 173, 0.842);
+}
+
+.price-defend {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(253, 246, 215);
+    color: rgb(230, 189, 102);
+    font-size: 25rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+
+.price-defend-1 {
+    width: 15%;
+}
+
+.price-defend-1-1 {
+    text-align: center;
+    border:1px solid rgb(230, 189, 102);
+    border-radius: 25rpx;
+    width: 75rpx;
+    margin-left: 8rpx;
+}
+
+.price-defend-2 {
+    width: 81%;
+}
+
+.price-defend-3 {
+    width: 4%;
+}
+
+.price-time {
+    display: flex;
+    flex-direction: row;
+    color: rgb(230, 189, 102);
+    font-size: 25rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+
+.goods-head {
+    position: fixed;
+    top: 0rpx;
+    width: 100%;
+    height: 70rpx;
+    background: #fff;
+    color: #989898;
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #f9f9f9;
+    line-height: 70rpx;
+    padding-bottom: 5rpx;
+}
+
+.goods-head-model {
+  text-align: center;
+  display: inline-block;
+}
+
+.goods-head-active {
+  color: black;
+  line-height: 62rpx;
+}
+
+.goods-head-active-border {
+  width: 30rpx;
+  margin: 0 auto;
+  height: 5rpx;
+  background: red;
+}
+
+.goods-end {
+    display: flex;
+    flex-direction: row;
+    height: 110rpx;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    bottom: 0rpx;
+}
+
+.homepage {
+    background-color: white;
+    width: 18%;
+    color: #989898;
+    font-size: 25rpx;
+}
+
+.homepage::after {
+    border: 0;
+}
+
+.homepage-img {
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: 13rpx;
+    margin-left: 20rpx;
+    display:block;
+}
+
+.shoppingcar {
+    background-color: white;
+    width: 18%;
+    font-size: 25rpx;
+    color: #989898;
+}
+
+.shoppingcar::after {
+    border: 0;
+}
+
+.shoppingcar-img {
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: 13rpx;
+    margin-left: 20rpx;
+    display:block;
+}
+
+.add-shoppingcar {
+    background-color: rgb(250, 227, 25);
+    width: 30%;
+    font-size: 30rpx;
+    color: white;
+    margin-top: 15rpx;
+    margin-bottom: 15rpx; 
+    border-radius: 0rpx;
+    border-top-left-radius: 50rpx;
+    border-bottom-left-radius: 50rpx; 
+    margin-left: 5rpx;
+}
+
+.add-shoppingcar::after{
+    border: 0;
+}
+
+.buy {
+    background-color: red;
+    width: 30%;
+    font-size: 30rpx;
+    color: white;
+    margin-top: 15rpx;
+    margin-bottom: 15rpx; 
+    border-radius: 0rpx; 
+    border-top-right-radius: 50rpx;
+    border-bottom-right-radius: 50rpx; 
+    margin-right: 25rpx;
+}
+
+.buy::after {
+    border: 0;
+}
+
+
+

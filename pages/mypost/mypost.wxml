@@ -1,0 +1,18 @@
+@import '/weui.wxss';
+<view class='page'>
+  <view>
+    我发布的商品
+  </view>
+  <block wx:for="{{goods}}" wx:key="">
+        <navigator url="/pages/goods/goods?id={{item.id}}" hover-class="navigator-hover">
+          <view class='goods'>
+            <image class='goods-image' mode='scaleToFill' src='{{item.image}}'></image>
+            <view class='goods-info'>
+              <text class='goods-name'>{{item.name}}</text>
+              <text class='goods-intro'>{{item.introduction}}</text>
+              <text>{{item.price}}</text>
+            </view>
+          </view>
+        </navigator>
+      </block>
+</view>

@@ -1,4 +1,6 @@
-// pages/message/message.js
+// pages/mypost/mypost.js
+const app = getApp()
+const url = app.globalData.server
 Page({
 
   /**

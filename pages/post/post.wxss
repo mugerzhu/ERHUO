@@ -8,7 +8,7 @@
 }
 .image{
   width: 200rpx;
-  height: 30vh;
+  height: 200rpx;
   border: 1px dotted #888;
   border-radius: 5px;
 }
@@ -31,4 +31,84 @@
 .goods-price > input{
   width: 30vw;
   border-bottom: 1px solid #888;
+}
+
+.page-body {
+    width: 100%;
+    margin-bottom: 30rpx;
+}
+
+.add-photo {
+    color: #989898;
+    width: 40%;
+    border: 0rpx solid white; 
+}
+
+.add-photo::after {
+    border: 0;
+}
+
+.add-photo-img {
+    width: 100rpx;
+    height: 100rpx;
+    display: block;
+    margin-left: 69rpx;
+    margin-top: 20rpx;
+}
+
+.goods-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20rpx;
+}
+
+.goods-name {
+    margin-top: 30rpx;
+
+    border-bottom: 1rpx solid rgb(238, 238, 238);
+}
+
+.goods-name input {
+    margin-bottom: 20rpx; 
+}
+
+.goods-intro {
+    margin-top: 20rpx;
+    height: 450rpx;
+}
+
+.goods-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.goods-new {
+    display: flex;
+    flex-direction: row; 
+}
+
+.goods-new-img {
+    width: 35rpx;
+    height: 35rpx;
+    margin-top: 18rpx;
+    margin-left: 350rpx;
+    margin-right: 20rpx;
+}
+
+.cheats {
+    color: rgb(82, 171, 255);
+    font-size: 30rpx;
+    text-align: center;
+    margin-bottom: 150rpx; 
+}
+
+.issue {
+    width: 100%;
+}
+
+.issue-button {
+    width: 94%;
+    background-color:rgb(253, 81, 81); 
+    color: white;
+    margin-bottom: 20rpx;
 }

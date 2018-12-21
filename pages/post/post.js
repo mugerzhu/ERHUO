@@ -2,19 +2,20 @@
 const qiniuUploader = require("../../utils/qiniuUploader");
 const regeneratorRuntime = require("../../utils/regenerator-runtime/runtime");
 
-const url = 'https://api.zdhspace.cn/'
+const app = getApp();
+const url = app.globalData.server;
 
 function initQiniu() {
   var options = {
     region: 'SCN',
-    uptokenURL: url+'media/token',
+    uptokenURL: url + 'media/token',
     domain: 'http://media.zdhspace.cn/',
     shouldUseQiniuFileName: true
   };
   qiniuUploader.init(options);
 }
 
-var app = getApp();
+
 Page({
 
   /**
@@ -28,62 +29,62 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
+  onLoad: function (options) {
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
-  error: function(e) {
+  error: function (e) {
     console.log(e.detail)
   },
-  chooseImage: function() {
+  chooseImage: function () {
     let that = this;
     wx.chooseImage({
       count: 3,
@@ -97,7 +98,7 @@ Page({
       }
     })
   },
-  upload: async function(e) {
+  upload: async function (e) {
     wx.showLoading({
       title: '正在提交',
     })
@@ -108,7 +109,7 @@ Page({
     for (var i = 0; i < 3; i++) {
       if (images[i]) {
         // 异步操作 同步化
-        var p = await new Promise(function(resolve, reject) {
+        var p = await new Promise(function (resolve, reject) {
           qiniuUploader.upload(images[i], (res) => {
             that.data.imagePath[i] = res.imageURL
             console.log(res.imageURL)
@@ -124,31 +125,35 @@ Page({
 
     // 提交表单
     wx.request({
-      url: url+'goods',
+      url: url + 'goods',
       method: 'POST',
-      header:{
-        'token':app.globalData.token
+      header: {
+        'token': wx.getStorageSync('token')
       },
       data: {
         'name': e.detail.value.name,
         'originalPrice': e.detail.value.original_price,
         'price': e.detail.value.price,
         'contact': e.detail.value.contact,
-        'introduction':e.detail.value.introduction,
+        'introduction': e.detail.value.introduction,
         'images': this.data.imagePath
       },
-      dataType: 'JSON',
-      success:function(res) {
-        if(res.data.code == 200) {
-          wx.switchTab({
-            url: '/pages/index/index',
+      success: function (res) {
+        console.log('qingqiu cheng gong')
+        console.log(res)
+        if (res.data.code == 200) {
+          console.log('提交成功')
+          wx.navigateTo({
+            url: '/pages/post/post_success',
           })
         }
       },
-      fail: function() {
-
+      fail: function () {
+        wx.navigateTo({
+          url: '/pages/post/post_fail',
+        })
       },
-      complete: function() {
+      complete: function () {
         wx.hideLoading()
       }
     })

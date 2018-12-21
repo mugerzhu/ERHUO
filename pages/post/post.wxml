@@ -7,19 +7,29 @@
   <button class='weui-btn ' bindtap='chooseImage'>选择照片</button>
   <view class='page__bd page__bd_spacing'>
     <form bindsubmit='upload'>
-      <!-- <button disabled='{{!takePhoto}}' bindtap='takePhoto'>拍照({{imageCount}})</button> -->
-
-
-      <input name='name' class='weui-input input-title' placeholder="商品品牌和名称，如：无印良品衬衫 L码" maxlength="15"></input>
-
-      <view class='goods-price'>
-        <input name='original_price' class='weui-input' type='digit' placeholder="原价"></input>
-        <input name='price' class='weui-input' type='digit' placeholder='售价'></input>
-      </view>
-
-      <input name='contact' class='weui-input input-title' placeholder="联系方式：QQ" type='number' maxlength="15"></input>
-      <textarea name="introduction" auto-height placeholder="在此描述你的宝贝：如品牌、规格、成色、购买渠道、转手原因等" />
-      <button class="weui-btn" type="primary" form-type='submit'>上传</button>
+        <view class='page-body goods-info'>
+            <view  class='goods-name' ><input name='name' placeholder='在此填写宝贝名称,如"法拉利"' maxlength='30'></input></view>
+            <view class='goods-intro'>
+                <textarea name="introduction" auto-height="true" placeholder="在此描述你的宝贝：如品牌、规格、成色、购买渠道、转手原因等" />
+            </view>
+        </view>
+        <view class='page-body goods-info'>
+            <view class='goods-name'>     
+                <input name='contact' placeholder="联系方式：QQ" type='number' maxlength="15"></input>
+            </view>
+            <view class='goods-name'>
+                <input name='original_price' type='digit' placeholder="原价"></input>
+            </view>
+            <view class='goods-name'>
+                 <input name='price' type='digit' placeholder='售价'></input>
+            </view>
+        </view>
+    
+    <view class='cheats'>
+        三天必买秘籍>
+    </view>
+    <!--发布button-->
+    <view class='issue'><button class='issue-button' form-type='submit'>发布</button></view>
     </form>
   </view>
 </view>

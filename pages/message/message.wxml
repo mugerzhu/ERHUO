@@ -1,6 +1,0 @@
-<view class="page" style='display:flex;flex-direction:colum'>
-  <text>敬</text>
-  <view>请</view>
-  <view>期</view>
-  <view>待</view>
-</view>

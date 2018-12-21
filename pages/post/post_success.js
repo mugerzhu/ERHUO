@@ -1,4 +1,5 @@
-// pages/detail/detail.js
+// pages/mypost/mypost.js
+const app = getApp()
 Page({
 
   /**
@@ -62,5 +63,15 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  toIndexPage:function() {
+    wx.switchTab({
+      url: '/pages/index/index',
+      success:function(){
+        app.globalData.oldgoods = []
+        app.globalData.goods = []
+        app.globalData.page = 1
+      }
+    })
   }
 })

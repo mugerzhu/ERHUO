@@ -1,6 +1,6 @@
 // pages/login/login.js
 const app = getApp()
-const url = 'https://api.zdhspace.cn/'
+const url = app.globalData.server
 Page({
 
   /**
@@ -66,7 +66,7 @@ Page({
 
   },
   login: function() {
-
+    let that = this
     wx.showLoading({
       title: '登录中',
     })
@@ -90,11 +90,12 @@ Page({
         lang: 'zh_CN',
         success: function(res) {
           userInfo = res.userInfo
-          console.log(userInfo)
           wx.setStorageSync('userInfo', res.userInfo)
         }
       })
     }
+
+    app.globalData.userInfo = userInfo
     //获取用户基本信息
 
     //开始登录
@@ -132,7 +133,7 @@ Page({
                       app.globalData.token = res.data.data.sessionKey
                       //页面跳转
                       wx.switchTab({
-                        url: '/pages/index/index',
+                        url: '/pages/aboutme/aboutme',
                       })
                     }
                   });

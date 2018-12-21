@@ -1,0 +1,48 @@
+<view class="container">
+  <view class="page-body">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <block wx:for="{{images}}" wx:key="*this">
+        <swiper-item>
+          <image src='{{item}}' class='img' bindtap='swipClick' mode='' style='width:100%;height:100%'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class='advertise'>
+      <view class='advertise-information'>YCU二货</view>
+      <view class='advertise-information'>100%正版</view>
+      <view class='advertise-information'>消毒塑封</view>
+      <view class='advertise-information'>满29包邮</view>
+    </view>
+
+    <view class='goods-name'>
+      <view class='goods-describe'>{{name}}</view>
+      <view class='goods-grade'>评分10.0</view>
+    </view>
+
+    <view class='goods-price'>
+      <view class='goods-price-information'>
+        <view class='goods-price-number'>
+          <view>
+            <text style='color:red;font-size:50rpx;'><text style='font-size:20rpx;'>￥</text>{{price}}</text>
+          </view>
+          <view>
+            <text class='price-before'>原价 ￥<text style='text-decoration:line-through;'>{{originalPrice}}</text></text>
+          </view>
+        </view>
+        <view class='freight'>运费3元 满29元包邮</view>
+      </view>
+      <view class='discount'>
+        <text>二手书3.1折</text>
+      </view>
+    </view>
+
+    
+  </view>
+
+
+  <view class='page-body'>
+    {{introduction}}
+  </view>
+
+</view>
