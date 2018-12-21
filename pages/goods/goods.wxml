@@ -1,7 +1,7 @@
 <view class="container">
   <view class="page-body">
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
-      <block wx:for="{{images}}" wx:key="*this">
+      <block wx:for="{{goods.images}}" wx:key="*this">
         <swiper-item>
           <image src='{{item}}' class='img' bindtap='swipClick' mode='' style='width:100%;height:100%'></image>
         </swiper-item>
@@ -16,7 +16,7 @@
     </view>
 
     <view class='goods-name'>
-      <view class='goods-describe'>{{name}}</view>
+      <view class='goods-describe'>{{goods.name}}</view>
       <view class='goods-grade'>评分10.0</view>
     </view>
 
@@ -24,10 +24,10 @@
       <view class='goods-price-information'>
         <view class='goods-price-number'>
           <view>
-            <text style='color:red;font-size:50rpx;'><text style='font-size:20rpx;'>￥</text>{{price}}</text>
+            <text style='color:red;font-size:50rpx;'><text style='font-size:20rpx;'>￥</text>{{goods.price}}</text>
           </view>
           <view>
-            <text class='price-before'>原价 ￥<text style='text-decoration:line-through;'>{{originalPrice}}</text></text>
+            <text class='price-before'>原价 ￥<text style='text-decoration:line-through;'>{{goods.originalPrice}}</text></text>
           </view>
         </view>
         <view class='freight'>运费3元 满29元包邮</view>
@@ -42,7 +42,8 @@
 
 
   <view class='page-body'>
-    {{introduction}}
+    {{goods.introduction}}
   </view>
 
+  <button bindtap='showContact' class="weui-btn" type="primary" plain="true">联系卖家</button>
 </view>

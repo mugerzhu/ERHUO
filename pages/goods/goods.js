@@ -14,7 +14,7 @@ Page({
     duration: 500,
     previousMargin: 0,
     nextMargin: 0,
-
+    goods: [],
     table: ["商品", "详情", "推荐"],
     activeIndex: 0,
     nav_width: ""
@@ -22,21 +22,16 @@ Page({
   },
 
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     let that = this
     console.log(options.id)
     wx.request({
-      url: url+'goods/'+options.id,
-      method:'GET',
-      success:function(res) {
-        if(res.statusCode == 200 && res.data.code == 200) {
-          var goods = res.data.data
+      url: url + 'goods/' + options.id,
+      method: 'GET',
+      success: function(res) {
+        if (res.statusCode == 200 && res.data.code == 200) {
           that.setData({
-            images:goods.images,
-            name: goods.name,
-            price: goods.price,
-            originalPrice:goods.originalPrice,
-            introduction: goods.introduction
+            goods: res.data.data
           })
         }
       }
@@ -46,21 +41,31 @@ Page({
     })
   },
 
-  ActiveClick: function (e) {
+  ActiveClick: function(e) {
     this.setData({
       activeIndex: e.currentTarget.dataset.index
     })
     console.log(this.data.activeIndex)
   },
 
-  swipClick: function (e) {
+  swipClick: function(e) {
     console.log(this.data.swiperCurrent);
     wx.switchTab({
       url: this.data.goodsLinks[this.data.swiperCurrent]
     })
+  },
+  showContact: function() {
+    let that = this
+    wx.showModal({
+      content: '联系方式' + that.data.goods.contact,
+      showCancel: false,
+      success: function(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        }
+      }
+    });
   }
 
 
 })
-
-

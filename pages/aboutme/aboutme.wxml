@@ -32,7 +32,7 @@
     </view>
   </view>
 
-  <view class="end-list weui-cells weui-cells_after-title">
+  <view bindtap='showInfo' class="end-list weui-cells weui-cells_after-title">
     <navigator url="#" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="/images/other/shoucang.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>

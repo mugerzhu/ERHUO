@@ -1,4 +1,6 @@
 /* pages/goods/goods.wxss */
+@import '/weui.wxss';
+
 .container{
     background-color: #EEEEEE;
 }

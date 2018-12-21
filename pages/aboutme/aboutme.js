@@ -93,5 +93,12 @@ Page({
       icon: 'none',
       duration: 2000
     })
+  },
+  showInfo:function(){
+    wx.showToast({
+      title: '此小程序由欧著源同学和朱德鸿同学共同开发',
+      icon:'none',
+      duration: 3000
+    })
   }
 })
